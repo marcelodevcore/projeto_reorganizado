@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedidos - Comercial Alfa</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Custom Dark Theme -->
+    <link rel="stylesheet" href="../css/dark-theme.css">
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="../index.html" style="font-size: 1.5rem; font-weight: bold; letter-spacing: 2px; color: #4fd1c5; font-family: 'Roboto', sans-serif;">
+                <i class="bi bi-box-seam me-2"></i><span class="fw-bold">Comercial Alfa</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">
+                            <i class="bi bi-speedometer2 me-1"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="produtos.html">
+                            <i class="bi bi-box-seam me-1"></i> Produtos
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="fornecedores.html">
+                            <i class="bi bi-truck me-1"></i> Fornecedores
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="pedidos.html">
+                            <i class="bi bi-cart-plus me-1"></i> Pedidos
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="consulta-pedidos.html">
+                            <i class="bi bi-search me-1"></i> Consultar Pedidos
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Main Content -->
+            <main class="col px-4 py-3">
+                <h1 class="h3 mb-4">Novo Pedido</h1>
+                
+                <!-- Alert para mensagens -->
+                <div id="alertaMensagem" class="alert alert-success alert-dismissible fade show d-none" role="alert">
+                    <span id="mensagemTexto"></span>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                
+                <!-- Formulário de Pedido -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Informações do Pedido</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="form-pedido">
+                            <div class="row mb-3">
+                                <div class="col-md-4">
+                                    <label for="data" class="form-label">Data*</label>
+                                    <input type="date" class="form-control" id="data" required>
+                                </div>
+                                <div class="col-md-8">
+                                    <label for="fornecedor" class="form-label">Fornecedor*</label>
+                                    <select class="form-select" id="fornecedor" required>
+                                        <option value="">Selecione um fornecedor...</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md-12">
+                                    <label for="observacoes" class="form-label">Observações</label>
+                                    <textarea class="form-control" id="observacoes" rows="2"></textarea>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Itens do Pedido -->
+                <div class="card mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="card-title mb-0">Itens do Pedido</h5>
+                        <button class="btn btn-sm btn-primary" id="btn-adicionar-item">
+                            <i class="bi bi-plus-circle me-1"></i> Adicionar Item
+                        </button>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-dark table-hover mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>Produto</th>
+                                        <th>Quantidade</th>
+                                        <th>Preço Unit.</th>
+                                        <th>Total</th>
+                                        <th>Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="itens-pedido">
+                                    <tr id="sem-itens">
+                                        <td colspan="5" class="text-center">Nenhum item adicionado</td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="3" class="text-end fw-bold">Total do Pedido:</td>
+                                        <td class="fw-bold" id="total-pedido">R$ 0,00</td>
+                                        <td></td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Botões de Ação -->
+                <div class="d-flex justify-content-end">
+                    <button class="btn btn-secondary me-2" id="btn-cancelar">Cancelar</button>
+                    <button class="btn btn-primary" id="btn-finalizar-pedido">Finalizar Pedido</button>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Modal Adicionar Item -->
+    <div class="modal fade" id="modalAdicionarItem" tabindex="-1" aria-labelledby="modalAdicionarItemLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalAdicionarItemLabel">Adicionar Item</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="form-item">
+                        <div class="mb-3">
+                            <label for="produto" class="form-label">Produto*</label>
+                            <select class="form-select" id="produto" required>
+                                <option value="">Selecione um produto...</option>
+                            </select>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="quantidade" class="form-label">Quantidade*</label>
+                                <input type="number" class="form-control" id="quantidade" min="1" value="1" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="preco" class="form-label">Preço Unitário*</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">R$</span>
+                                    <input type="number" class="form-control" id="preco" step="0.01" min="0" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="estoque-disponivel" class="form-label">Estoque Disponível</label>
+                            <input type="text" class="form-control" id="estoque-disponivel" readonly>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="btn-confirmar-item">Adicionar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Confirmação -->
+    <div class="modal fade" id="modalConfirmacao" tabindex="-1" aria-labelledby="modalConfirmacaoLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalConfirmacaoLabel">Confirmar Pedido</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Deseja realmente finalizar este pedido?</p>
+                    <p>Esta ação irá atualizar o estoque dos produtos.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="btn-confirmar-pedido">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom Scripts -->
+    <script src="../js/api.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/pedidos.js"></script>
+</body>
+</html>

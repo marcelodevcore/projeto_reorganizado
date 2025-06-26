@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fornecedores - Comercial Alfa</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Custom Dark Theme -->
+    <link rel="stylesheet" href="../css/dark-theme.css">
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="../css/style.css">
+   
+
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="../index.html" style="font-size: 1.5rem; font-weight: bold; letter-spacing: 2px; color: #4fd1c5; font-family: 'Roboto', sans-serif;">
+                <i class="bi bi-box-seam me-2"></i><span class="fw-bold">Comercial Alfa</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">
+                            <i class="bi bi-speedometer2 me-1"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="produtos.html">
+                            <i class="bi bi-box-seam me-1"></i> Produtos
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="fornecedores.html">
+                            <i class="bi bi-truck me-1"></i> Fornecedores
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pedidos.html">
+                            <i class="bi bi-cart-plus me-1"></i> Pedidos
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="consulta-pedidos.html">
+                            <i class="bi bi-search me-1"></i> Consultar Pedidos
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Main Content -->
+            <main class="col px-4 py-3">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h1 class="h3">Fornecedores</h1>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNovoFornecedor">
+                        <i class="bi bi-plus-circle me-1"></i> Novo Fornecedor
+                    </button>
+                </div>
+                
+                <!-- Alert para mensagens -->
+                <div id="alertaMensagem" class="alert alert-success alert-dismissible fade show d-none" role="alert">
+                    <span id="mensagemTexto"></span>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                
+                <!-- Filtro e Pesquisa -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-search"></i></span>
+                                    <input type="text" class="form-control" id="busca-fornecedor" placeholder="Buscar fornecedores...">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <select class="form-select" id="filtro-estado">
+                                    <option value="">Todos os estados</option>
+                                    <option value="AC">Acre</option>
+                                    <option value="AL">Alagoas</option>
+                                    <option value="AP">Amapá</option>
+                                    <option value="AM">Amazonas</option>
+                                    <option value="BA">Bahia</option>
+                                    <option value="CE">Ceará</option>
+                                    <option value="DF">Distrito Federal</option>
+                                    <option value="ES">Espírito Santo</option>
+                                    <option value="GO">Goiás</option>
+                                    <option value="MA">Maranhão</option>
+                                    <option value="MT">Mato Grosso</option>
+                                    <option value="MS">Mato Grosso do Sul</option>
+                                    <option value="MG">Minas Gerais</option>
+                                    <option value="PA">Pará</option>
+                                    <option value="PB">Paraíba</option>
+                                    <option value="PR">Paraná</option>
+                                    <option value="PE">Pernambuco</option>
+                                    <option value="PI">Piauí</option>
+                                    <option value="RJ">Rio de Janeiro</option>
+                                    <option value="RN">Rio Grande do Norte</option>
+                                    <option value="RS">Rio Grande do Sul</option>
+                                    <option value="RO">Rondônia</option>
+                                    <option value="RR">Roraima</option>
+                                    <option value="SC">Santa Catarina</option>
+                                    <option value="SP">São Paulo</option>
+                                    <option value="SE">Sergipe</option>
+                                    <option value="TO">Tocantins</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <button class="btn btn-outline-primary w-100" id="btn-limpar-filtro">
+                                    <i class="bi bi-x-circle me-1"></i> Limpar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tabela de Fornecedores -->
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Lista de Fornecedores</h5>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-dark table-hover mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>Nome</th>
+                                        <th>CNPJ</th>
+                                        <th>Cidade</th>
+                                        <th>Estado</th>
+                                        <th>Telefone</th>
+                                        <th>Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="lista-fornecedores">
+                                    <tr>
+                                        <td colspan="6" class="text-center">Carregando fornecedores...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Modal Novo Fornecedor -->
+    <div class="modal fade" id="modalNovoFornecedor" tabindex="-1" aria-labelledby="modalNovoFornecedorLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalNovoFornecedorLabel">Novo Fornecedor</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="form-fornecedor">
+                        <div class="row mb-3">
+                            <div class="col-md-8">
+                                <label for="nome" class="form-label">Nome*</label>
+                                <input type="text" class="form-control" id="nome" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="cnpj" class="form-label">CNPJ*</label>
+                                <input type="text" class="form-control" id="cnpj" maxlength="14" required>
+                                <div class="form-text">Apenas números, sem pontuação</div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="cidade" class="form-label">Cidade*</label>
+                                <input type="text" class="form-control" id="cidade" required>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="estado" class="form-label">Estado*</label>
+                                <select class="form-select" id="estado" required>
+                                    <option value="">Selecione...</option>
+                                    <option value="AC">Acre</option>
+                                    <option value="AL">Alagoas</option>
+                                    <option value="AP">Amapá</option>
+                                    <option value="AM">Amazonas</option>
+                                    <option value="BA">Bahia</option>
+                                    <option value="CE">Ceará</option>
+                                    <option value="DF">Distrito Federal</option>
+                                    <option value="ES">Espírito Santo</option>
+                                    <option value="GO">Goiás</option>
+                                    <option value="MA">Maranhão</option>
+                                    <option value="MT">Mato Grosso</option>
+                                    <option value="MS">Mato Grosso do Sul</option>
+                                    <option value="MG">Minas Gerais</option>
+                                    <option value="PA">Pará</option>
+                                    <option value="PB">Paraíba</option>
+                                    <option value="PR">Paraná</option>
+                                    <option value="PE">Pernambuco</option>
+                                    <option value="PI">Piauí</option>
+                                    <option value="RJ">Rio de Janeiro</option>
+                                    <option value="RN">Rio Grande do Norte</option>
+                                    <option value="RS">Rio Grande do Sul</option>
+                                    <option value="RO">Rondônia</option>
+                                    <option value="RR">Roraima</option>
+                                    <option value="SC">Santa Catarina</option>
+                                    <option value="SP">São Paulo</option>
+                                    <option value="SE">Sergipe</option>
+                                    <option value="TO">Tocantins</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="telefone" class="form-label">Telefone</label>
+                                <input type="text" class="form-control" id="telefone">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="contato" class="form-label">Contato</label>
+                                <input type="text" class="form-control" id="contato">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="observacoes" class="form-label">Observações</label>
+                            <textarea class="form-control" id="observacoes" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="btn-salvar-fornecedor">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Editar Fornecedor -->
+    <div class="modal fade" id="modalEditarFornecedor" tabindex="-1" aria-labelledby="modalEditarFornecedorLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalEditarFornecedorLabel">Editar Fornecedor</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="form-editar-fornecedor">
+                        <input type="hidden" id="edit-id">
+                        <div class="row mb-3">
+                            <div class="col-md-8">
+                                <label for="edit-nome" class="form-label">Nome*</label>
+                                <input type="text" class="form-control" id="edit-nome" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="edit-cnpj" class="form-label">CNPJ*</label>
+                                <input type="text" class="form-control" id="edit-cnpj" maxlength="14" required>
+                                <div class="form-text">Apenas números, sem pontuação</div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="edit-cidade" class="form-label">Cidade*</label>
+                                <input type="text" class="form-control" id="edit-cidade" required>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="edit-estado" class="form-label">Estado*</label>
+                                <select class="form-select" id="edit-estado" required>
+                                    <option value="">Selecione...</option>
+                                    <option value="AC">Acre</option>
+                                    <option value="AL">Alagoas</option>
+                                    <option value="AP">Amapá</option>
+                                    <option value="AM">Amazonas</option>
+                                    <option value="BA">Bahia</option>
+                                    <option value="CE">Ceará</option>
+                                    <option value="DF">Distrito Federal</option>
+                                    <option value="ES">Espírito Santo</option>
+                                    <option value="GO">Goiás</option>
+                                    <option value="MA">Maranhão</option>
+                                    <option value="MT">Mato Grosso</option>
+                                    <option value="MS">Mato Grosso do Sul</option>
+                                    <option value="MG">Minas Gerais</option>
+                                    <option value="PA">Pará</option>
+                                    <option value="PB">Paraíba</option>
+                                    <option value="PR">Paraná</option>
+                                    <option value="PE">Pernambuco</option>
+                                    <option value="PI">Piauí</option>
+                                    <option value="RJ">Rio de Janeiro</option>
+                                    <option value="RN">Rio Grande do Norte</option>
+                                    <option value="RS">Rio Grande do Sul</option>
+                                    <option value="RO">Rondônia</option>
+                                    <option value="RR">Roraima</option>
+                                    <option value="SC">Santa Catarina</option>
+                                    <option value="SP">São Paulo</option>
+                                    <option value="SE">Sergipe</option>
+                                    <option value="TO">Tocantins</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="edit-telefone" class="form-label">Telefone</label>
+                                <input type="text" class="form-control" id="edit-telefone">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="edit-email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="edit-email">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="edit-contato" class="form-label">Contato</label>
+                                <input type="text" class="form-control" id="edit-contato">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="edit-observacoes" class="form-label">Observações</label>
+                            <textarea class="form-control" id="edit-observacoes" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="btn-atualizar-fornecedor">Atualizar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom Scripts -->
+    <script src="../js/api.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/fornecedores.js"></script>
+</body>
+</html>

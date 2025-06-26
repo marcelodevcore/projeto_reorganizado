@@ -1,0 +1,402 @@
+/* Estilos adicionais para o tema dark */
+.custom-card-header {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid var(--dark-border);
+  padding: 0.75rem 1.25rem;
+}
+
+.custom-card-footer {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-top: 1px solid var(--dark-border);
+  padding: 0.75rem 1.25rem;
+}
+
+/* Estilos para tabelas responsivas */
+.table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Estilos para formulários */
+.form-floating > .form-control,
+.form-floating > .form-select {
+  background-color: var(--dark-input-bg);
+  border-color: var(--dark-border);
+  color: var(--dark-text-primary);
+}
+
+.form-floating > .form-control:focus,
+.form-floating > .form-select:focus {
+  background-color: var(--dark-input-bg);
+  border-color: var(--dark-primary);
+  color: var(--dark-text-primary);
+}
+
+.form-floating > label {
+  color: var(--dark-text-secondary);
+}
+
+/* Estilos para cards com hover */
+.hover-card {
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.hover-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos para badges de status */
+.badge-status-success {
+  background-color: rgba(56, 176, 0, 0.2);
+  color: var(--dark-success);
+  border: 1px solid var(--dark-success);
+}
+
+.badge-status-warning {
+  background-color: rgba(255, 190, 11, 0.2);
+  color: var(--dark-warning);
+  border: 1px solid var(--dark-warning);
+}
+
+.badge-status-danger {
+  background-color: rgba(255, 0, 110, 0.2);
+  color: var(--dark-danger);
+  border: 1px solid var(--dark-danger);
+}
+
+/* Estilos para ícones de ação nas tabelas */
+.action-icon {
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.2s;
+}
+
+.action-icon:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.action-icon-edit {
+  color: var(--dark-primary);
+}
+
+.action-icon-delete {
+  color: var(--dark-danger);
+}
+
+.action-icon-view {
+  color: var(--dark-success);
+}
+
+/* Estilos para inputs com ícones */
+.input-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+  color: var(--dark-text-secondary);
+}
+
+/* Estilos para tooltips personalizados */
+.custom-tooltip {
+  --bs-tooltip-bg: var(--dark-bg-secondary);
+  --bs-tooltip-color: var(--dark-text-primary);
+  --bs-tooltip-opacity: 1;
+}
+
+/* Estilos para loading spinner */
+.spinner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  border-radius: inherit;
+}
+
+.spinner-border-primary {
+  color: var(--dark-primary);
+}
+
+/* Estilos para campos de busca */
+.search-container {
+  position: relative;
+}
+
+.search-clear {
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: var(--dark-text-secondary);
+  opacity: 0.7;
+}
+
+.search-clear:hover {
+  opacity: 1;
+}
+
+/* Estilos para notificações */
+.notification-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  font-size: 0.65rem;
+  padding: 0.2rem 0.4rem;
+}
+
+/* Estilos para gráficos */
+.chart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  width: 100%;
+  margin: auto;
+}
+
+/* Estilos para tabelas com linhas alternadas */
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--dark-text-primary);
+}
+
+/* Estilos para campos obrigatórios */
+.required-field::after {
+  content: "*";
+  color: var(--dark-danger);
+  margin-left: 4px;
+}
+
+/* Estilos para dropdown personalizado */
+.dropdown-menu-dark {
+  background-color: var(--dark-bg-secondary);
+  border: 1px solid var(--dark-border);
+}
+
+.dropdown-item {
+  color: var(--dark-text-primary);
+}
+
+.dropdown-item:hover, .dropdown-item:focus {
+  background-color: var(--dark-hover);
+  color: var(--dark-text-primary);
+}
+
+/* Estilos para botões de ação em grupo */
+.btn-group-action .btn {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+}
+
+/* Estilos para campos de data */
+input[type="date"] {
+  color-scheme: dark;
+}
+
+/* Estilos para select2 (se utilizado) */
+.select2-container--dark .select2-selection {
+  background-color: var(--dark-input-bg) !important;
+  border-color: var(--dark-border) !important;
+  color: var(--dark-text-primary) !important;
+}
+
+.select2-container--dark .select2-results__option {
+  background-color: var(--dark-bg-secondary);
+  color: var(--dark-text-primary);
+}
+
+.select2-container--dark .select2-results__option--highlighted {
+  background-color: var(--dark-primary);
+  color: white;
+}
+
+/* Estilos para animações de transição */
+.fade-transition {
+  transition: opacity 0.3s ease-in-out;
+}
+
+.slide-transition {
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Estilos para impressão */
+@media print {
+  body {
+    background-color: white !important;
+    color: black !important;
+  }
+  
+  .card {
+    border: 1px solid #ddd !important;
+    box-shadow: none !important;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* Centralizar logo e slogan */
+.logo-centralizada {
+  background: transparent;
+  margin-bottom: 0.5rem;
+}
+
+/* Melhorar contraste de fontes em fundo escuro */
+body, .text-dark, .table, .form-label, .form-control, .form-select, .card-title, .card-footer, .nav-link, .navbar-brand {
+  color: #e6e6e6 !important;
+}
+
+.text-light-emphasis {
+  color: #b2f5ea !important;
+}
+
+/* Destaque para estoque baixo */
+.estoque-baixo {
+  background: rgba(255, 0, 0, 0.15) !important;
+  color: #ff4d4f !important;
+  border-radius: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  font-weight: bold;
+  display: inline-block;
+}
+
+/* Centralizar total do pedido */
+.total-pedido {
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #4fd1c5;
+  margin: 1rem 0;
+}
+
+/* Melhorar botões */
+.btn, .btn-sm, .btn-primary, .btn-success, .btn-danger, .btn-warning, .btn-outline-success, .btn-outline-danger {
+  border-radius: 0.5rem !important;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.btn:hover, .btn:focus {
+  box-shadow: 0 2px 8px rgba(79, 209, 197, 0.2);
+  opacity: 0.95;
+}
+
+/* Animação underline nos itens do menu da navbar */
+.navbar-nav .nav-link {
+  position: relative;
+  overflow: hidden;
+  transition: color 0.2s;
+  padding-bottom: 5px; /* levemente menor para 2px */
+}
+
+.navbar-nav .nav-link::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px; /* traço mais fino */
+  background: linear-gradient(90deg, #4fd1c5 0%, #38b2ac 100%);
+  transition: width 0.3s cubic-bezier(.4,0,.2,1);
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+.navbar-nav .nav-link:hover::after,
+.navbar-nav .nav-link.active::after {
+  width: 100%;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+  color: #4fd1c5 !important;
+}
+
+/* Centralizar verticalmente o gráfico de fornecedores */
+#grafico-fornecedores {
+  display: block;
+  margin: auto;
+  height: 320px !important;
+  max-height: 100%;
+  min-height: 220px;
+}
+
+.card .chart-container {
+  height: 350px;
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Ajustar cor do texto do dropdown de configuração do gráfico de fornecedores */
+.card-header .dropdown-menu, .card-header .dropdown-item {
+  color: #222 !important;
+  background: #fff !important;
+}
+
+.card-header .dropdown-item:hover, .card-header .dropdown-item:focus {
+  background: #f0f0f0 !important;
+  color: #111 !important;
+}
+
+.card-header .dropdown-toggle {
+  color: #222 !important;
+  background: #fff !important;
+  border-color: #ddd !important;
+}
+
+/* Estilo especial para itens de estoque baixo */
+#lista-estoque-baixo .list-group-item {
+  background: #252525 !important;
+  color: #fff !important;
+  border: none;
+  border-bottom: 1px solid #333 !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1rem;
+}
+
+#lista-estoque-baixo .produto-codigo {
+  color: #b0b0b0 !important;
+  font-size: 0.95em;
+  margin-left: 0.5em;
+}
+
+#lista-estoque-baixo .estoque-quantidade {
+  font-weight: bold;
+  color: #fff !important;
+}
+
+/* Texto de ajuda (form-text) em cinza claro e centralizado com o input */
+.form-text {
+  color: #e0e0e0 !important;
+  font-size: 0.95em;
+  margin-left: 0.25rem;
+  margin-top: 0.1rem;
+  display: block;
+  text-align: left;
+}
+
+/* Botão de fechar (X) dos modais branco, sem borda e menor */
+.btn-close {
+  background: none !important;
+  border: none !important;
+  opacity: 1 !important;
+  width: 1.1em;
+  height: 1.1em;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='white' viewBox='0 0 16 16'%3e%3cpath d='M2.146 2.146a.5.5 0 0 1 .708 0L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
+  background-size: 1.1em 1.1em;
+}
